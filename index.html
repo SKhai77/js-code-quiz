@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
 </head>
+
 <body>
     
+    <!-- header -->
+    <header>
+        <div class="highscores">
+           <a href="./highscores.html">View Highscores</a>
+        </div>
+
+        <div class="timer">
+            Time:0
+        </div>
+    </header>
+
+    <!-- main content -->
+    <main>       
+        <section>
+            <h1>Coding Quiz Challenge</h1>
+            <p>
+                Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by 15 seconds!
+            </p>
+            <button class="start-button">Start Quiz</button>
+        </section>
+    </main>
+
+    <!-- Your JavaScript file -->
+    <script type="text/javascript" src="assets/script/logic.js">
+    </script>
+    <script type="text/javascript" src="assets/script/questions.js">
+    </script>
 </body>
+
 </html>

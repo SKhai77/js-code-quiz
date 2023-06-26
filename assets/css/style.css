@@ -1,0 +1,114 @@
+/* this style apply to the whole page */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+/* this style apply to the whole body of the page */
+body {
+  font-family: sans-serif;
+}
+  
+/* header */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1% 1% 1% 1%;
+}
+
+h1 {
+  margin-bottom: 3%;
+}
+
+/* main */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* section content */
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
+  width: 42%;
+  margin-top: 25px;
+}
+
+/* highscores form */
+form {
+  width: 43%;
+  margin-top: 25px;
+}
+
+/* hyperlink */
+a {
+  text-decoration: none;
+}
+
+/* paragraph */
+p {
+  margin: 2%;
+  text-align: center;
+}
+/* button */
+button {
+  background-color: rgb(80, 27, 124);
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.21px;
+  line-height: 16px;
+  padding: 0 4px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: rgb(80, 27, 124);
+  border-radius: 4px;
+  color: #fff;   
+  letter-spacing: 0.21px;
+  line-height: 16px;
+  padding: 0 4px;
+  opacity: 70%;
+}
+
+#goback-button {
+  margin-right: 5px;
+}
+
+/* 
+@media screen and (max-width: 1183px) {
+  main {
+  flex-direction: column;
+  }
+.word-guess,
+.results {
+  width: 90vw;
+  }
+  
+section {
+  margin: 20px auto;
+  width: 92vw;
+  }
+}
+  
+@media screen and (max-width: 504px) {
+.large-font {
+  font-size: 2em;
+  }
+  
+.button {
+  font-size: 12px;
+  width: 20ox;
+ }
+  
+.timer {
+  height: 200px;
+  }
+}
+   */
