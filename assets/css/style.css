@@ -18,6 +18,10 @@ header {
   padding: 1% 1% 1% 1%;
 }
 
+.timer-container {
+  display: flex;
+}
+
 h1 {
   margin-bottom: 3%;
 }
@@ -77,7 +81,7 @@ button:hover {
   opacity: 70%;
 }
 
-#goback-button {
+.goback-button {
   margin-right: 5px;
 }
 
