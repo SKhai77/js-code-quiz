@@ -15,7 +15,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 1% 1% 1% 1%;
+  padding: 1%;
 }
 
 .timer-container {
