@@ -43,18 +43,14 @@ section {
   margin-top: 25px;
 }
 
-#question-list {
-  display: none;
-}
+
 /* highscores form */
 form {
   width: 43%;
   margin-top: 25px;
 }
 
-#score-form {
-  display: none;
-}
+
 /* hyperlink */
 a {
   text-decoration: none;
@@ -95,6 +91,8 @@ button:hover {
 .goback-button {
   margin-right: 5px;
 }
+
+
 
 /* 
 @media screen and (max-width: 1183px) {

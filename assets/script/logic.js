@@ -15,14 +15,17 @@ var storedScores = JSON.parse(localStorage.getItem('scores')) || [];
 
 // Function to start the quiz
 function startQuiz() {
+    
     // Hide the start button and display the question list
+    
+  startButton.style.display = 'none';
+  questionListElement.style.display = 'block';
+ 
+  var mainContainer = document.getElementById("container");
+  mainContainer.style.display = "block";
 
-    startButton = document.getElementById("container");
-    startButton.style.display = 'none';
-    questionListElement.style.display = 'block';
 
-    var mainContainer = document.getElementById("container");
-    mainContainer.style.display = "block";
+
 
     // Start the timer
     startTimer();
