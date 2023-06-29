@@ -9,27 +9,45 @@
 </head>
 
 <body>
-    
+
     <!-- header -->
     <header>
         <div class="highscores">
-           <a href="./highscores.html">View Highscores</a>
+            <a href="./highscores.html">View Highscores</a>
         </div>
         <div class="timer-container">Time:
-        <div class="timer">0
+            <div id="timer">0
+            </div>
         </div>
-        </div>       
     </header>
 
     <!-- main content -->
-    <main>       
-        <section>
+    <main>
+        <section id="container">
+
             <h1>Coding Quiz Challenge</h1>
-            <p>
-                Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by 15 seconds!
+
+            <p class="instruction">
+                Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+                answers will penalize your scoretime by 15 seconds!
             </p>
-            <button class="start-button">Start Quiz</button>
+
+            <button id="start-btn">Start Quiz</button>
+
+            <ul id="question-list" style="display: none;">
+                <!-- Questions will be dynamically added here -->
+            </ul>
+
+
+            <form id="score-form" style="display: none;">
+                <h2>All done!</h2>
+                <label for="initials">Enter your initials:</label>
+                <input type="text" id="initials" required>
+                <button type="submit" id="submit-btn">Submit</button>
+            </form>
+
         </section>
+
     </main>
 
     <!-- Your JavaScript file -->

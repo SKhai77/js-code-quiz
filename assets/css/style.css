@@ -43,22 +43,33 @@ section {
   margin-top: 25px;
 }
 
+#question-list {
+  display: none;
+}
 /* highscores form */
 form {
   width: 43%;
   margin-top: 25px;
 }
 
+#score-form {
+  display: none;
+}
 /* hyperlink */
 a {
   text-decoration: none;
 }
 
 /* paragraph */
-p {
+.instruction {
   margin: 2%;
   text-align: center;
 }
+
+p {
+  margin: 5px;
+}
+
 /* button */
 button {
   background-color: rgb(80, 27, 124);

@@ -41,6 +41,6 @@ To play the game,
 - Then, you can save your initials and your score
 
 Preview the homepage:
-![Code Quiz Screenshot](./assets/screenshot/code-quiz.png)
+![Code Quiz Screenshot](./assets/screenshot/code-quiz-page.png)
 
 
