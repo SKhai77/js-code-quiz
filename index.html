@@ -24,25 +24,27 @@
     <!-- main content -->
     <main>
         <section id="container">
-
+            <div class="instruction">
             <h1>Coding Quiz Challenge</h1>
 
-            <p class="instruction">
+            <p>
                 Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
                 answers will penalize your scoretime by 15 seconds!
-            </p>
+            </p></div>
 
             <button id="start-btn">Start Quiz</button>
 
             <ul id="question-list" style="display: none;">
                 <!-- Questions will be dynamically added here -->
             </ul>
-
-
+            
+       
+          
             <form id="score-form" style="display: none;">
                 <h2>All done!</h2>
-                <label for="initials">Enter your initials:</label>
-                <input type="text" id="initials" required>
+                <h5>Your final score is  </h5>
+                <label for="initials">Initials: </label>
+                <input type="text" id="initial-input" required>
                 <button type="submit" id="submit-btn">Submit</button>
             </form>
 

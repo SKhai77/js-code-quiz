@@ -38,11 +38,22 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-self: center;
-  width: 42%;
+  width: 43%;
   margin-top: 25px;
 }
 
+.score-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 43%;
+  margin-top: 25px;
+}
+
+#score-list {
+  background-color: rgb(233, 215, 233);
+}
 
 /* highscores form */
 form {
@@ -56,12 +67,13 @@ a {
   text-decoration: none;
 }
 
-/* paragraph */
+/* instrcution paragraph */
 .instruction {
   margin: 2%;
   text-align: center;
 }
 
+/* paragraph */
 p {
   margin: 5px;
 }
@@ -75,7 +87,7 @@ button {
   letter-spacing: 0.21px;
   line-height: 16px;
   padding: 0 4px;
-  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 button:hover {
@@ -88,21 +100,18 @@ button:hover {
   opacity: 70%;
 }
 
-.goback-button {
+#go-back-btn {
   margin-right: 5px;
 }
 
 
-
-/* 
+/*
+ 
 @media screen and (max-width: 1183px) {
   main {
   flex-direction: column;
   }
-.word-guess,
-.results {
-  width: 90vw;
-  }
+
   
 section {
   margin: 20px auto;
@@ -124,4 +133,4 @@ section {
   height: 200px;
   }
 }
-   */
+  

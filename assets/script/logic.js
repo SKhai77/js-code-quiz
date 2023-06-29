@@ -55,6 +55,7 @@ function displayQuestion() {
     var questionText = document.createElement('p');
     questionText.textContent = currentQuestion.question;
     listItem.appendChild(questionText);
+    listItem.style.listStyle = 'none';
 
     var choicesList = document.createElement('ol');
     choicesList.style.listStyle = 'none'; // Set list style to none
@@ -151,11 +152,10 @@ function saveScore(event) {
         };
         storedScores.push(scoreData);
         localStorage.setItem('scores', JSON.stringify(storedScores));
-        window.location.href = 'scores.html';
+        window.location.href = 'highscores.html';
     }
 }
 
-// Attach event listeners
 window.addEventListener('DOMContentLoaded', function () {
     timerElement = document.getElementById('timer');
     questionListElement = document.getElementById('question-list');
@@ -164,6 +164,8 @@ window.addEventListener('DOMContentLoaded', function () {
     scoreForm = document.getElementById('score-form');
     initialsInput = document.getElementById('initial-input');
 
+    
+// Attach event listeners
     startButton.addEventListener('click', startQuiz);
     submitButton.addEventListener('click', saveScore);
 });

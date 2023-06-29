@@ -28,17 +28,3 @@ var quizData = [
     }
 ];
 
-// // Function to save the score
-// function saveScore(event) {
-//     event.preventDefault();
-//     var initials = initialsInput.value.trim();
-//     if (initials !== '') {
-//         var scoreData = {
-//             initials: initials,
-//             score: score
-//         };
-//         storedScores.push(scoreData);
-//         localStorage.setItem('scores', JSON.stringify(storedScores));
-//         window.location.href = 'scores.html';
-//     }
-// }
