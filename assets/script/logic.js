@@ -5,7 +5,6 @@ var startButton;
 var submitButton;
 var scoreForm;
 var initialsInput;
-
 var timeLeft = 75; // Initial time for the quiz
 var timerInterval;
 var score = 0;
@@ -15,17 +14,13 @@ var storedScores = JSON.parse(localStorage.getItem('scores')) || [];
 
 // Function to start the quiz
 function startQuiz() {
-    
+
     // Hide the start button and display the question list
-    
-  startButton.style.display = 'none';
-  questionListElement.style.display = 'block';
- 
-  var mainContainer = document.getElementById("container");
-  mainContainer.style.display = "block";
+    startButton.style.display = 'none';
+    questionListElement.style.display = 'block';
 
-
-
+    var mainContainer = document.getElementById("container");
+    mainContainer.style.display = "block";
 
     // Start the timer
     startTimer();
@@ -55,7 +50,6 @@ function displayQuestion() {
     var questionText = document.createElement('p');
     questionText.textContent = currentQuestion.question;
     listItem.appendChild(questionText);
-    listItem.style.listStyle = 'none';
 
     var choicesList = document.createElement('ol');
     choicesList.style.listStyle = 'none'; // Set list style to none
@@ -63,9 +57,6 @@ function displayQuestion() {
         var choiceItem = document.createElement('li');
         var choiceButton = document.createElement('button');
         choiceButton.textContent = (i + 1) + '. ' + currentQuestion.choices[i];
-        choiceButton.addEventListener('click', function () {
-            checkAnswer(this.textContent.slice(3)); // Remove the order list number from the selected answer
-        });
         choiceItem.appendChild(choiceButton);
         choicesList.appendChild(choiceItem);
     }
@@ -73,73 +64,85 @@ function displayQuestion() {
     listItem.appendChild(choicesList);
     questionListElement.innerHTML = '';
     questionListElement.appendChild(listItem);
-}
 
-// Function to check the selected answer
-function checkAnswer(selectedAnswer) {
-    var currentQuestion = quizData[currentQuestionIndex];
-    if (selectedAnswer === currentQuestion.answer) {
-        score += timeLeft;
-        showAnswerMessage('Correct answer!');
-    } else {
-        timeLeft -= 15; // Deduct 15 seconds for a wrong answer
-        if (timeLeft < 0) {
-            timeLeft = 0; // Ensure the timer does not go
+    // Add event listener to the choices list instead of individual buttons
+    choicesList.addEventListener('click', function (event) {
+        var selectedChoice = event.target;
+        if (selectedChoice.tagName === 'BUTTON') {
+            checkAnswer(selectedChoice.textContent.slice(3)); // Remove the order list number from the selected answer
+            choicesList.removeEventListener('click', arguments.callee); // Remove the event listener to allow only one click per question
         }
-        showAnswerMessage('Wrong answer!');
+    });
+
+
+    function checkAnswer(selectedAnswer) {
+        var currentQuestion = quizData[currentQuestionIndex];
+        if (selectedAnswer === currentQuestion.answer) {
+            score = timeLeft; // Set the score equal to the remaining time on the timer
+            showAnswerMessage('Correct answer!');
+        } else {
+            timeLeft -= 15; // Deduct 15 seconds for a wrong answer
+            if (timeLeft < 0) {
+                timeLeft = 0; // Ensure the timer does not go below 0
+            }
+            showAnswerMessage('Wrong answer!');
+        }
+
+
+        // Disable choice buttons during the delay
+        disableChoiceButtons();
+
+        // Delay the display of the next question
+        setTimeout(function () {
+            currentQuestionIndex++;
+            if (currentQuestionIndex === quizData.length) {
+                finishQuiz();
+            } else {
+                displayQuestion();
+                enableChoiceButtons(); // Enable choice buttons after displaying the next question
+            }
+        }, 100); // delay
     }
 
-    // Disable choice buttons during the delay
-    disableChoiceButtons();
+    // Function to disable choice buttons
+    function disableChoiceButtons() {
+        var choiceButtons = document.querySelectorAll('#question-list button');
+        choiceButtons.forEach(function (button) {
+            button.disabled = true;
+        });
+    }
 
-    // Delay the display of the next question
-    setTimeout(function () {
-        currentQuestionIndex++;
-        if (currentQuestionIndex === quizData.length) {
-            finishQuiz();
-        } else {
-            displayQuestion();
-            enableChoiceButtons(); // Enable choice buttons after displaying the next question
-        }
-    }, 100); // delay
+    // Function to enable choice buttons
+    function enableChoiceButtons() {
+        var choiceButtons = document.querySelectorAll('#question-list button');
+        choiceButtons.forEach(function (button) {
+            button.disabled = false;
+        });
+    }
+
+    // Function to show the answer message
+    function showAnswerMessage(message) {
+        var answerMessage = document.createElement('p');
+        answerMessage.textContent = message;
+        questionListElement.appendChild(answerMessage);
+    }
+
+    // Function to finish the quiz
+    function finishQuiz() {
+        clearInterval(timerInterval);
+        isQuizFinished = true;
+
+        // Hide the question list after a 3-second delay
+        setTimeout(function () {
+            questionListElement.style.display = 'none';
+
+            // Show the score form and submit button after the question list is hidden
+            scoreForm.style.display = 'block';
+        }, 100); // delay
+    }
+
 }
 
-// Function to disable choice buttons
-function disableChoiceButtons() {
-    var choiceButtons = document.querySelectorAll('#question-list button');
-    choiceButtons.forEach(function (button) {
-        button.disabled = true;
-    });
-}
-
-// Function to enable choice buttons
-function enableChoiceButtons() {
-    var choiceButtons = document.querySelectorAll('#question-list button');
-    choiceButtons.forEach(function (button) {
-        button.disabled = false;
-    });
-}
-
-// Function to show the answer message
-function showAnswerMessage(message) {
-    var answerMessage = document.createElement('p');
-    answerMessage.textContent = message;
-    questionListElement.appendChild(answerMessage);
-}
-
-// Function to finish the quiz
-function finishQuiz() {
-    clearInterval(timerInterval);
-    isQuizFinished = true;
-
-    // Hide the question list after a 3-second delay
-    setTimeout(function () {
-        questionListElement.style.display = 'none';
-
-        // Show the score form and submit button after the question list is hidden
-        scoreForm.style.display = 'block';
-    }, 100); // delay
-}
 
 // Function to save the score
 function saveScore(event) {
@@ -156,6 +159,7 @@ function saveScore(event) {
     }
 }
 
+// Retrieve elements from the document
 window.addEventListener('DOMContentLoaded', function () {
     timerElement = document.getElementById('timer');
     questionListElement = document.getElementById('question-list');
@@ -164,8 +168,8 @@ window.addEventListener('DOMContentLoaded', function () {
     scoreForm = document.getElementById('score-form');
     initialsInput = document.getElementById('initial-input');
 
-    
-// Attach event listeners
+
+    // Attach event listeners
     startButton.addEventListener('click', startQuiz);
     submitButton.addEventListener('click', saveScore);
 });

@@ -3,31 +3,28 @@ var storedScores = JSON.parse(localStorage.getItem('scores')) || [];
 
 // Function to display the scores
 function displayScores() {
-    scoreListElement.innerHTML = '';
+  scoreListElement.innerHTML = '';
 
-    storedScores.forEach(function (scoreData) {
-        var listItem = document.createElement('li');
-        listItem.textContent = scoreData.initials + ': ' + scoreData.score;
-        scoreListElement.appendChild(listItem);
-    });
+  storedScores.forEach(function (scoreData) {
+    var listItem = document.createElement('li');
+    listItem.textContent = scoreData.initials + ': ' + scoreData.score;
+    scoreListElement.appendChild(listItem);
+  });
 }
-
-
-
 
 // Function to go back to index.html
 function goBack() {
-    window.location.href = 'index.html';
+  window.location.href = 'index.html';
 }
 
 // Function to reset the scores
 function resetScores() {
-    // Clear the stored scores in local storage
-    localStorage.removeItem('scores');
+  // Clear the stored scores in local storage
+  localStorage.removeItem('scores');
 
-    // Remove all score entries from the scores table
-    var scoreListElement = document.getElementById('score-list');
-    scoreListElement.innerHTML = '';
+  // Remove all score entries from the scores table
+  var scoreListElement = document.getElementById('score-list');
+  scoreListElement.innerHTML = '';
 }
 
 
